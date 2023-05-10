@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_recent_search.xml" value="0.1" />
-        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_search.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_shop.xml" value="0.1273229532898041" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/item_shop_preview.xml" value="0.1947463768115942" />
       </map>
     </option>
   </component>
