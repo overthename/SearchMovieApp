@@ -44,26 +44,14 @@
           android:id="@+id/btn_search"
           app:layout_constraintHorizontal_weight="2"
           android:text="검색"
+          android:onClick="@{()->searchFragment.searchShops()}"
           android:background="@color/design_default_color_secondary"
           app:layout_constraintStart_toEndOf="@+id/tl_search"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/btn_search_recent"
-          app:layout_constraintBottom_toTopOf="@+id/rv_search_result"
-          />
-
-      <androidx.appcompat.widget.AppCompatButton
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:id="@+id/btn_search_recent"
-          android:text="최근검색"
-          android:layout_margin="2dp"
-          app:layout_constraintHorizontal_weight="2"
-          android:background="@color/design_default_color_secondary_variant"
-          app:layout_constraintStart_toEndOf="@+id/btn_search"
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintBottom_toTopOf="@+id/rv_search_result"
           />
+
 
 
       <androidx.recyclerview.widget.RecyclerView

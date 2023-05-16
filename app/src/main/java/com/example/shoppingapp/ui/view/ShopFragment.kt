@@ -6,13 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentShopBinding
-import com.example.shoppingapp.ui.viewmodel.ShopSearchViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class ShopFragment : Fragment() {
     private var _binding: FragmentShopBinding? = null

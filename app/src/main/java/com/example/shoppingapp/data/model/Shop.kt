@@ -2,39 +2,43 @@ package com.example.shoppingapp.data.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
+@Entity(tableName = "shops")
 data class Shop(
-    @Json(name = "brand")
+    @field:Json(name = "brand")
     val brand: String,
-    @Json(name = "category1")
+    @field:Json(name = "category1")
     val category1: String,
-    @Json(name = "category2")
+    @field:Json(name = "category2")
     val category2: String,
-    @Json(name = "category3")
+    @field:Json(name = "category3")
     val category3: String,
-    @Json(name = "category4")
+    @field:Json(name = "category4")
     val category4: String,
-    @Json(name = "hprice")
+    @field:Json(name = "hprice")
     val hprice: String,
-    @Json(name = "image")
+    @field:Json(name = "image")
     val image: String,
-    @Json(name = "link")
+    @field:Json(name = "link")
     val link: String,
-    @Json(name = "lprice")
+    @field:Json(name = "lprice")
     val lprice: String,
-    @Json(name = "maker")
+    @field:Json(name = "maker")
     val maker: String,
-    @Json(name = "mallName")
+    @field:Json(name = "mallName")
     val mallName: String,
-    @Json(name = "productId")
+    @PrimaryKey(autoGenerate = false)
+    @field:Json(name = "productId")
     val productId: String,
-    @Json(name = "productType")
+    @field:Json(name = "productType")
     val productType: String,
-    @Json(name = "title")
+    @field:Json(name = "title")
     val title: String
 ) : Parcelable

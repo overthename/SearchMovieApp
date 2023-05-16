@@ -15,22 +15,22 @@ import androidx.room.RoomDatabase
 
 abstract class ShopSearchDatabase : RoomDatabase() {
 
-//    abstract fun movieSearchDao(): MovieSearchDao
+//    abstract fun shopSearchDao(): ShopSearchDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: ShopSearchDatabase? = null
-
-        private fun buildDatabase(context: Context): ShopSearchDatabase =
-            Room.databaseBuilder(
-                context.applicationContext,
-                ShopSearchDatabase::class.java,
-                "recent-search"
-            ).build()
-
-        fun getInstance(context: Context): ShopSearchDatabase =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
-            }
-    }
+//    companion object {
+//        @Volatile
+//        private var INSTANCE: ShopSearchDatabase? = null
+//
+//        private fun buildDatabase(context: Context): ShopSearchDatabase =
+//            Room.databaseBuilder(
+//                context.applicationContext,
+//                ShopSearchDatabase::class.java,
+//                "recent-search"
+//            ).build()
+//
+//        fun getInstance(context: Context): ShopSearchDatabase =
+//            INSTANCE ?: synchronized(this) {
+//                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+//            }
+//    }
 }

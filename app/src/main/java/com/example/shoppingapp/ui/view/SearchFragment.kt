@@ -7,11 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentSearchBinding
+import com.example.shoppingapp.ui.adapter.ShopSearchAdapter
+import com.example.shoppingapp.ui.viewmodel.SearchViewModel
 
 class SearchFragment : Fragment() {
+
+    private lateinit var shopSearchViewModel: SearchViewModel
+    private lateinit var shopSearchAdapter: ShopSearchAdapter
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -27,45 +33,45 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        bookSearchViewModel = (activity as MainActivity).bookSearchViewModel
+        binding.apply {
+            searchFragment = this@SearchFragment
+        }
+        shopSearchViewModel = (activity as MainActivity).shopSearchViewModel
 
         setupRecyclerView()
-        searchBooks()
 
-//        bookSearchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
-//            val books = response.documents
-//            bookSearchAdapter.submitList(books)
-//        }
-        collectLatestStateFlow(searchViewModel.searchPagingResult) {
-            bookSearchAdapter.submitData(it)
+        shopSearchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
+            val shops = response.items
+            shopSearchAdapter.submitList(shops)
         }
+
 
     }
     private fun setupRecyclerView() {
-//        bookSearchAdapter = BookSearchAdapter()
-        bookSearchAdapter = BookSearchPagingAdapter()
+        shopSearchAdapter = ShopSearchAdapter()
+
         binding.rvSearchResult.apply {
             setHasFixedSize(true)
             layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    GridLayoutManager(requireContext(),2)
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
                     DividerItemDecoration.VERTICAL
                 )
             )
-//            adapter = bookSearchAdapter
-            adapter = bookSearchAdapter.withLoadStateFooter(
-                footer = BookSearchLoadStateAdapter(bookSearchAdapter::retry)
-            )
+            adapter = shopSearchAdapter
+
         }
-        bookSearchAdapter.setOnItemClickListener {
-            val action = SearchFragmentDirections.actionFragmentSearchToFragmentBook(it)
-            findNavController().navigate(action)
-        }
+
     }
 
-
+    fun searchShops(){
+//        val query = binding.etSearch.text.toString()
+        val query = "가방"
+        shopSearchViewModel.searchShops(query)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
