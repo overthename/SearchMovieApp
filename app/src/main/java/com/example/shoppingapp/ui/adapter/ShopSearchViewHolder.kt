@@ -1,4 +1,4 @@
-package com.example.booksearch.ui.adapter
+package com.example.shoppingapp.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -9,13 +9,10 @@ class ShopSearchViewHolder(
     private val binding: ItemShopPreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(shop: Shop) {
-//        val author = book.authors.toString().removeSurrounding("[", "]")
-//        val publisher = book.publisher
-//        val date = if (book.datetime.isNotEmpty()) book.datetime.substring(0, 10) else ""
-
+        val title = shop.title.substring(0,shop.title.indexOf('<'))
         itemView.apply {
             binding.ivShopImage.load(shop.image)
-            binding.tvTitle.text = shop.title
+            binding.tvTitle.text = title
             binding.tvBrand.text = shop.brand
             binding.tvLprice.text = shop.lprice
         }

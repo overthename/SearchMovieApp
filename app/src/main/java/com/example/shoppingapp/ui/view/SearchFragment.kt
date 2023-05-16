@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,10 +14,13 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentSearchBinding
 import com.example.shoppingapp.ui.adapter.ShopSearchAdapter
 import com.example.shoppingapp.ui.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
-    private lateinit var shopSearchViewModel: SearchViewModel
+//    private lateinit var shopSearchViewModel: SearchViewModel
+    private val searchViewModel by viewModels<SearchViewModel>()
     private lateinit var shopSearchAdapter: ShopSearchAdapter
 
     private var _binding: FragmentSearchBinding? = null
@@ -36,11 +40,11 @@ class SearchFragment : Fragment() {
         binding.apply {
             searchFragment = this@SearchFragment
         }
-        shopSearchViewModel = (activity as MainActivity).shopSearchViewModel
+//        shopSearchViewModel = (activity as MainActivity).shopSearchViewModel
 
         setupRecyclerView()
 
-        shopSearchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
+        searchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
             val shops = response.items
             shopSearchAdapter.submitList(shops)
         }
@@ -70,7 +74,7 @@ class SearchFragment : Fragment() {
     fun searchShops(){
 //        val query = binding.etSearch.text.toString()
         val query = "가방"
-        shopSearchViewModel.searchShops(query)
+        searchViewModel.searchShops(query)
     }
 
     override fun onDestroyView() {
