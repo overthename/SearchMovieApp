@@ -9,7 +9,7 @@ data class SearchResponse(
     @field:Json(name = "display")
     val display: Int,
     @field:Json(name = "items")
-    val items: List<Shop>,
+    val items: MutableList<Shop>,
     @field:Json(name = "lastBuildDate")
     val lastBuildDate: String,
     @field:Json(name = "start")

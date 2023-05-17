@@ -16,16 +16,16 @@ class SearchViewModel @Inject constructor(
     private val shopSearchRepository: ShopSearchRepository
 ) : ViewModel(){
 
-
 //    Api
     private val _searchResult = MutableLiveData<SearchResponse>()
     val searchResult: LiveData<SearchResponse> get() = _searchResult
 
-    fun searchShops(query: String) = viewModelScope.launch(Dispatchers.IO) {
-        val response = shopSearchRepository.searchShops(query,1)
+    fun searchShops(query: String, start: Int) = viewModelScope.launch(Dispatchers.IO) {
+        val response = shopSearchRepository.searchShops(query,start)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
+
             }
         }
     }

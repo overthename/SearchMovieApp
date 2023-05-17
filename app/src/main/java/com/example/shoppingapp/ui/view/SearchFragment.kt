@@ -1,6 +1,7 @@
 package com.example.shoppingapp.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentSearchBinding
 import com.example.shoppingapp.ui.adapter.ShopSearchAdapter
@@ -25,6 +27,7 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
+    private var start = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +49,9 @@ class SearchFragment : Fragment() {
 
         searchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
             val shops = response.items
-            shopSearchAdapter.submitList(shops)
+            shopSearchAdapter.setList(shops)
+//            shopSearchAdapter.submitList(shops)
+            shopSearchAdapter.notifyItemRangeInserted((start - 1) * 10, 10)
         }
 
 
@@ -56,9 +61,7 @@ class SearchFragment : Fragment() {
 
         binding.rvSearchResult.apply {
             setHasFixedSize(true)
-            layoutManager =
-                    GridLayoutManager(requireContext(),2)
-//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(requireContext(),2)
             addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
@@ -66,15 +69,29 @@ class SearchFragment : Fragment() {
                 )
             )
             adapter = shopSearchAdapter
-
         }
+
+        binding.rvSearchResult.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as GridLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter!!.itemCount-1
+
+                if (!binding.rvSearchResult.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
+                    shopSearchAdapter.deleteLoading()
+                    searchViewModel.searchShops("가방",(++start - 1) * 10)
+                }
+            }
+        })
 
     }
 
     fun searchShops(){
 //        val query = binding.etSearch.text.toString()
         val query = "가방"
-        searchViewModel.searchShops(query)
+        searchViewModel.searchShops(query,1)
     }
 
     override fun onDestroyView() {

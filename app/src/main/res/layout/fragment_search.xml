@@ -53,7 +53,6 @@
           />
 
 
-
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/rv_search_result"
           android:layout_width="0dp"
@@ -63,7 +62,6 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tl_search" />
-
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
