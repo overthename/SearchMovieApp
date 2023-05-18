@@ -28,6 +28,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private var start = 1
+    private var test = 1
 
 
     override fun onCreateView(
@@ -53,6 +54,7 @@ class SearchFragment : Fragment() {
 
             shopSearchAdapter.setList(shops)
 //            shopSearchAdapter.submitList(shops)
+            Log.e("test1",((test-1)*10).toString())
             shopSearchAdapter.notifyItemRangeInserted((start-1) * 10,10)
         }
 
@@ -82,7 +84,8 @@ class SearchFragment : Fragment() {
                 val itemTotalCount = recyclerView.adapter!!.itemCount-1
 
                 if (!binding.rvSearchResult.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
-                    shopSearchAdapter.deleteLoading()
+//                    shopSearchAdapter.deleteLoading()
+//                    Log.e("test2",((++test-1)*10+1).toString())
                     searchViewModel.searchShops("가방",(++start-1) * 10 +1)
                 }
             }

@@ -17,13 +17,6 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_searchFragment_to_recentSearchFragment"
-            app:destination="@id/recentSearchFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/shopFragment"
@@ -33,18 +26,5 @@
         <argument
             android:name="shop"
             app:argType="com.example.shoppingapp.data.model.Shop" />
-    </fragment>
-    <fragment
-        android:id="@+id/recentSearchFragment"
-        android:name="com.example.shoppingapp.ui.view.RecentSearchFragment"
-        android:label="recentSearchFragment"
-        tools:layout="@layout/fragment_recent_search" >
-        <action
-            android:id="@+id/action_recentSearchFragment_to_searchFragment"
-            app:destination="@id/searchFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 </navigation>
