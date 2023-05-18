@@ -11,6 +11,7 @@ class ShopSearchRepositoryImpl @Inject constructor(
     private val api: ShopSearchApi
 ): ShopSearchRepository {
 
+    // SearchResponse 타입으로 받아볼 수 있어요
     override suspend fun searchShops(
         query: String,
         display: Int,

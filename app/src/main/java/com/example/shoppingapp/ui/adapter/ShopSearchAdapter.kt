@@ -2,18 +2,19 @@ package com.example.shoppingapp.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.ScrollCaptureCallback
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.shoppingapp.data.model.Shop
 import com.example.shoppingapp.databinding.ItemLoadingBinding
 import com.example.shoppingapp.databinding.ItemShopPreviewBinding
 
 class ShopSearchAdapter :
     androidx.recyclerview.widget.ListAdapter<Shop, ShopSearchViewHolder>(BookDiffCallback) {
+    // submitList를 활용하면 직접 관리 안해줘도 괜찮아요
     private val items = ArrayList<Shop>()
+    // 로딩 UI를 넣으려했군요 좋읍니다.
+    // 보통 이런 상수는 const로 선언하죠
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
 
@@ -21,7 +22,6 @@ class ShopSearchAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
     }
-
 //    override fun getItemViewType(position: Int): Int {
 //        return when (items[position].productId) {
 //            "" -> VIEW_TYPE_LOADING
@@ -76,6 +76,7 @@ class ShopSearchAdapter :
     }
 
 
+    // 지금 상태에서는 이게 활용되고 있진 않겠군요
     companion object {
         private val BookDiffCallback: DiffUtil.ItemCallback<Shop> =
             object : DiffUtil.ItemCallback<Shop>() {

@@ -5,6 +5,7 @@ import coil.load
 import com.example.shoppingapp.data.model.Shop
 import com.example.shoppingapp.databinding.ItemShopPreviewBinding
 
+// 좋읍니다
 class ShopSearchViewHolder(
     private val binding: ItemShopPreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
