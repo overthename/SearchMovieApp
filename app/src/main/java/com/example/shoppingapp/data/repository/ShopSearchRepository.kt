@@ -7,6 +7,7 @@ interface ShopSearchRepository {
 
     suspend fun searchShops(
         query: String,
+        display: Int,
         start: Int,
     ): Response<SearchResponse>
 

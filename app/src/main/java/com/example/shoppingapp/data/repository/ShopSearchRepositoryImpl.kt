@@ -13,9 +13,10 @@ class ShopSearchRepositoryImpl @Inject constructor(
 
     override suspend fun searchShops(
         query: String,
+        display: Int,
         start: Int,
     ): Response<SearchResponse>{
-        return api.searchShops(query, start)
+        return api.searchShops(query,display, start)
     }
 
 

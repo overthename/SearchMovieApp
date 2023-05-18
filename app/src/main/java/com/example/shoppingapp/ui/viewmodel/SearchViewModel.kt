@@ -21,7 +21,7 @@ class SearchViewModel @Inject constructor(
     val searchResult: LiveData<SearchResponse> get() = _searchResult
 
     fun searchShops(query: String, start: Int) = viewModelScope.launch(Dispatchers.IO) {
-        val response = shopSearchRepository.searchShops(query,start)
+        val response = shopSearchRepository.searchShops(query,10,start)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
@@ -29,6 +29,7 @@ class SearchViewModel @Inject constructor(
             }
         }
     }
+
 
 
 }

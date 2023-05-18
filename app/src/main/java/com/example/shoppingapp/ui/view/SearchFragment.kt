@@ -29,6 +29,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private var start = 1
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,9 +50,10 @@ class SearchFragment : Fragment() {
 
         searchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
             val shops = response.items
+
             shopSearchAdapter.setList(shops)
 //            shopSearchAdapter.submitList(shops)
-            shopSearchAdapter.notifyItemRangeInserted((start - 1) * 10, 10)
+            shopSearchAdapter.notifyItemRangeInserted((start-1) * 10,10)
         }
 
 
@@ -81,12 +83,13 @@ class SearchFragment : Fragment() {
 
                 if (!binding.rvSearchResult.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
                     shopSearchAdapter.deleteLoading()
-                    searchViewModel.searchShops("가방",(++start - 1) * 10)
+                    searchViewModel.searchShops("가방",(++start-1) * 10 +1)
                 }
             }
-        })
 
+        })
     }
+
 
     fun searchShops(){
 //        val query = binding.etSearch.text.toString()

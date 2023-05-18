@@ -16,6 +16,7 @@ interface ShopSearchApi {
     @GET("v1/search/shop.json")
     suspend fun searchShops(
         @Query("query") query: String,
+        @Query("display") display: Int,
         @Query("start") start: Int
     ): Response<SearchResponse>
 }

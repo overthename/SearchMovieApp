@@ -47,7 +47,7 @@ class ShopSearchAdapter :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 //        val shop: Shop = currentList[position]
-//        Log.e("position",items[position].toString())
+//        Log.e("test3",items[position].toString())
 
         if(holder is ShopSearchViewHolder){
             holder.bind(items[position])
@@ -64,7 +64,7 @@ class ShopSearchAdapter :
 
     fun setList(shop: MutableList<Shop>) {
         items.addAll(shop)
-        items.add(Shop(" ", " ","","","","","","","","","","","",""))
+        items.add(Shop("", "","","","","","","","","","","","",""))
     }
 
     fun deleteLoading(){
