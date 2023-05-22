@@ -6,8 +6,8 @@
     <data>
 
     <variable
-        name="searchFragment"
-        type="com.example.shoppingapp.ui.view.SearchFragment"/>
+        name="viewmodel"
+        type="com.example.shoppingapp.ui.viewmodel.SearchViewModel"/>
 
     </data>
 
@@ -44,7 +44,6 @@
           android:id="@+id/btn_search"
           app:layout_constraintHorizontal_weight="2"
           android:text="검색"
-          android:onClick="@{()->searchFragment.searchShops()}"
           android:background="@color/design_default_color_secondary"
           app:layout_constraintStart_toEndOf="@+id/tl_search"
           app:layout_constraintTop_toTopOf="parent"
@@ -58,6 +57,8 @@
           android:layout_width="0dp"
           android:layout_height="0dp"
           android:scrollbars="vertical"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:spanCount="2"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"

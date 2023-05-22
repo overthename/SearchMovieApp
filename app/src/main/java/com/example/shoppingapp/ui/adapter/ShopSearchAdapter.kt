@@ -14,34 +14,9 @@ import com.example.shoppingapp.databinding.ItemShopPreviewBinding
 class ShopSearchAdapter :
     androidx.recyclerview.widget.ListAdapter<Shop, ShopSearchViewHolder>(BookDiffCallback) {
     private val items = ArrayList<Shop>()
-    private val VIEW_TYPE_ITEM = 0
-    private val VIEW_TYPE_LOADING = 1
-
-    inner class LoadingViewHolder(private val binding: ItemLoadingBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-    }
-
-//    override fun getItemViewType(position: Int): Int {
-//        return when (items[position].productId) {
-//            "" -> VIEW_TYPE_LOADING
-//            else -> VIEW_TYPE_ITEM
-//        }
-//    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ShopSearchViewHolder {
-//        return when (viewType) {
-//            VIEW_TYPE_ITEM -> {
-//                val layoutInflater = LayoutInflater.from(parent.context)
-//                val binding = ItemShopPreviewBinding.inflate(layoutInflater, parent, false)
-//                ShopSearchViewHolder(binding)
-//            }
-//            else -> {
-//                val layoutInflater = LayoutInflater.from(parent.context)
-//                val binding = ItemLoadingBinding.inflate(layoutInflater, parent, false)
-//                LoadingViewHolder(binding)}
-//        }
         return ShopSearchViewHolder(
             ItemShopPreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
@@ -50,14 +25,8 @@ class ShopSearchAdapter :
 
     override fun onBindViewHolder(holder: ShopSearchViewHolder, position: Int) {
 //        val shop: Shop = currentList[position]
-        Log.e("test3",items[position].toString())
-
-//        if(holder is ShopSearchViewHolder){
-//            holder.bind(items[position])
-//        }else{
-//
-//        }
         holder.bind(items[position])
+//        holder.bind(getItem(position))
 
     }
 
@@ -68,11 +37,6 @@ class ShopSearchAdapter :
 
     fun setList(shop: MutableList<Shop>) {
         items.addAll(shop)
-//        items.add(Shop("", "","","","","","","","","","","","",""))
-    }
-
-    fun deleteLoading(){
-        items.removeAt(items.lastIndex)
     }
 
 
