@@ -32,12 +32,12 @@ class ShopFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        bookSearchViewModel = (activity as MainActivity).bookSearchViewModel
 
-        val shop = args.shop
-        binding.webview.apply {
-            webViewClient = WebViewClient()
-            settings.javaScriptEnabled = true
-            loadUrl(shop.link)
-        }
+//        val shop = args.shop
+//        binding.webview.apply {
+//            webViewClient = WebViewClient()
+//            settings.javaScriptEnabled = true
+//            loadUrl(shop.link)
+//        }
 
     }
 

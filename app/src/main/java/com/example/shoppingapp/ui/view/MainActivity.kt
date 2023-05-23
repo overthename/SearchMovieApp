@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.shoppingapp.data.repository.ShopSearchRepositoryImpl
 import com.example.shoppingapp.databinding.ActivityMainBinding
 import com.example.shoppingapp.ui.viewmodel.SearchViewModel
-import com.example.shoppingapp.ui.viewmodel.ShopSearchViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
