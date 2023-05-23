@@ -13,7 +13,6 @@ import com.example.shoppingapp.databinding.ItemShopPreviewBinding
 
 class ShopSearchAdapter :
     androidx.recyclerview.widget.ListAdapter<Shop, ShopSearchViewHolder>(BookDiffCallback) {
-    private val items = ArrayList<Shop>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ShopSearchViewHolder {
@@ -24,19 +23,7 @@ class ShopSearchAdapter :
 
 
     override fun onBindViewHolder(holder: ShopSearchViewHolder, position: Int) {
-//        val shop: Shop = currentList[position]
-        holder.bind(items[position])
-//        holder.bind(getItem(position))
-
-    }
-
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-
-    fun setList(shop: MutableList<Shop>) {
-        items.addAll(shop)
+        holder.bind(getItem(position))
     }
 
 

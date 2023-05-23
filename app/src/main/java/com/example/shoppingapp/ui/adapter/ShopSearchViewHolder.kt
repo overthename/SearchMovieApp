@@ -9,7 +9,12 @@ class ShopSearchViewHolder(
     private val binding: ItemShopPreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(shop: Shop) {
-        val title = shop.title.substring(0,shop.title.indexOf('<'))
+        var title=""
+        if(shop.title.contains('<')){
+            title = shop.title.substring(0,shop.title.indexOf('<'))
+        }else{
+            title = shop.title
+        }
         itemView.apply {
             binding.ivShopImage.load(shop.image)
             binding.tvTitle.text = title

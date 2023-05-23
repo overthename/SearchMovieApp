@@ -44,19 +44,10 @@ class SearchFragment : Fragment() {
         binding.viewmodel = searchViewModel
 
         setupRecyclerView()
-        moreLoad()
 
-        var i :Int=0
-        searchViewModel.start.observe(viewLifecycleOwner) { response ->
-            i = response
-        }
+        searchViewModel.searchResult.observe(viewLifecycleOwner) { shops ->
 
-        searchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
-            val shops = response.items
-
-            shopSearchAdapter.setList(shops)
-//            shopSearchAdapter.submitList(shops)
-            shopSearchAdapter.notifyItemRangeInserted(i * 10,10)
+            shopSearchAdapter.submitList(shops)
         }
 
     }
@@ -72,22 +63,20 @@ class SearchFragment : Fragment() {
                 )
             )
             adapter = shopSearchAdapter
+            addOnScrollListener(onPostScrollListener)
         }
-        searchViewModel.onSearchShops("가방")
-
     }
 
-    fun moreLoad(){
-        binding.rvSearchResult.addOnScrollListener(onPostScrollListener)
-    }
+
 
     private  val onPostScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            val lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
-            val itemTotalCount = recyclerView.adapter!!.itemCount-1
+            val layoutManager = recyclerView.layoutManager as GridLayoutManager
+            val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+            val itemTotalCount = layoutManager.itemCount-1
 
             if (lastVisibleItemPosition == itemTotalCount) {
-                searchViewModel.onSearchShops("가방")
+                searchViewModel.onLoadNextPage()
             }
         }
     }
@@ -95,8 +84,8 @@ class SearchFragment : Fragment() {
 
 
     override fun onDestroyView() {
-        _binding = null
         binding.rvSearchResult.removeOnScrollListener(onPostScrollListener)
+        _binding = null
         super.onDestroyView()
     }
 

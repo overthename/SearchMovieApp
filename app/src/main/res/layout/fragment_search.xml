@@ -31,6 +31,7 @@
 
           <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/et_search"
+              android:text="@={viewmodel.query}"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:inputType="textAutoComplete" />
@@ -44,6 +45,7 @@
           android:id="@+id/btn_search"
           app:layout_constraintHorizontal_weight="2"
           android:text="검색"
+          android:onClick="@{()->viewmodel.onSearchShop()}"
           android:background="@color/design_default_color_secondary"
           app:layout_constraintStart_toEndOf="@+id/tl_search"
           app:layout_constraintTop_toTopOf="parent"
