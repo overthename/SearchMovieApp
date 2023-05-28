@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/drawable-v24/ic_search_24.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/drawable/toggler_selector.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_like.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_recent_search.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/fragment_shop.xml" value="0.1273229532898041" />
         <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/item_loading.xml" value="0.1" />
-        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/item_shop_preview.xml" value="0.1947463768115942" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/layout/item_shop_preview.xml" value="0.22" />
+        <entry key="..\:/Users/user/Desktop/ShoppingApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

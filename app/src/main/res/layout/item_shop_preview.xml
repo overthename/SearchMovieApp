@@ -8,7 +8,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -26,9 +27,8 @@
             android:layout_height="wrap_content"
             android:text="상품명"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_shop_image"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_shop_image"/>
 
         <TextView
             android:id="@+id/tv_lprice"
@@ -37,9 +37,8 @@
             android:text="최저가"
             android:textSize="15sp"
             android:layout_marginStart="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintStart_toEndOf="@+id/iv_shop_image"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
 
         <TextView
             android:id="@+id/tv_brand"
@@ -48,14 +47,23 @@
             android:text="쇼핑몰"
             android:textSize="15sp"
             android:layout_marginStart="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_lprice"
-            app:layout_constraintStart_toEndOf="@+id/iv_shop_image"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-
-
-
+        <ToggleButton
+            android:id="@+id/tb_like"
+            android:layout_marginTop="22dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/toggler_selector"
+            app:layout_constraintStart_toEndOf="@+id/tv_brand"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_shop_image"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

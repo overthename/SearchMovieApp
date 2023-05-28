@@ -12,24 +12,14 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.data.model.Shop
 import com.example.shoppingapp.databinding.ItemLoadingBinding
 import com.example.shoppingapp.databinding.ItemShopPreviewBinding
+import com.example.shoppingapp.ui.view.LikeFragment
 import com.example.shoppingapp.ui.view.SearchFragment
 
-class ShopSearchAdapter(val fragment : SearchFragment) :
-    androidx.recyclerview.widget.ListAdapter<Shop, ShopSearchAdapter.ShopSearchViewHolder>(BookDiffCallback) {
-
-    private var itemClickListener: OnItemClickListener? = null
-
-    interface OnItemClickListener {
-        fun onClick(position: Int)
-    }
-
-    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
-        itemClickListener = onItemClickListener
-    }
+class ShopLikeAdapter(val fragment : LikeFragment) :
+    androidx.recyclerview.widget.ListAdapter<Shop, ShopLikeAdapter.ShopSearchViewHolder>(BookDiffCallback) {
 
     class ShopSearchViewHolder(
         private val binding: ItemShopPreviewBinding,
-        itemClickListener: OnItemClickListener?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         var toggle = binding.tbLike
@@ -54,8 +44,7 @@ class ShopSearchAdapter(val fragment : SearchFragment) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopSearchViewHolder {
         return ShopSearchViewHolder(
-            ItemShopPreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            itemClickListener
+            ItemShopPreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -63,7 +52,6 @@ class ShopSearchAdapter(val fragment : SearchFragment) :
         holder.bind(getItem(position))
         holder.toggle.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked) {
-                
                 fragment.saveLike(getItem(position))
             }
         }

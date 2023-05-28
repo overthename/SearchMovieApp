@@ -77,6 +77,15 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    //Room
+    fun saveShop(shop: Shop) = viewModelScope.launch(Dispatchers.IO) {
+        shopSearchRepository.insertShops(shop)
+    }
+
+    fun deleteShop(shop: Shop) = viewModelScope.launch(Dispatchers.IO) {
+        shopSearchRepository.deleteShops(shop)
+    }
+
     companion object {
         private const val PAGING_SIZE = 20
     }
