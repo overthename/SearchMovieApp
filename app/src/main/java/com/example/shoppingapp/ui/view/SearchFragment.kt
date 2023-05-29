@@ -8,13 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapp.R
-import com.example.shoppingapp.data.model.Shop
+import com.example.shoppingapp.data.model.LikeShop
 import com.example.shoppingapp.databinding.FragmentSearchBinding
 import com.example.shoppingapp.ui.adapter.ShopSearchAdapter
 import com.example.shoppingapp.ui.viewmodel.SearchViewModel
@@ -24,7 +22,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private val searchViewModel by viewModels<SearchViewModel>()
-    private var shopSearchAdapter: ShopSearchAdapter = ShopSearchAdapter(this)
+    private var shopSearchAdapter: ShopSearchAdapter = ShopSearchAdapter(
+        onLikeStateChanged = { shop, isChecked -> searchViewModel.onLikeStateChange(shop,isChecked) }
+    )
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
         binding.viewmodel = searchViewModel
 
         setupRecyclerView()
-
+        searchViewModel.updateLikeStates()
         searchViewModel.searchResult.observe(viewLifecycleOwner) { shops ->
 
             shopSearchAdapter.submitList(shops)
@@ -67,16 +67,6 @@ class SearchFragment : Fragment() {
             addOnScrollListener(onPostScrollListener)
         }
 
-    }
-
-    fun saveLike(shop: Shop){
-        Log.e("save",shop.toString())
-        searchViewModel.saveShop(shop)
-
-    }
-
-    fun deleteLike(shop: Shop){
-//        searchViewModel.deleteShop(shop)
     }
 
 
