@@ -1,7 +1,9 @@
 package com.example.shoppingapp.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.shoppingapp.data.api.ShopSearchApi
+import com.example.shoppingapp.data.db.ShopSearchDatabase
 import com.example.shoppingapp.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -18,7 +20,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-
+    //retrofit
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
@@ -44,5 +46,15 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): ShopSearchApi {
         return retrofit.create(ShopSearchApi::class.java)
     }
+
+    //room
+    @Singleton
+    @Provides
+    fun provideShopSearchDatabase(@ApplicationContext context: Context): ShopSearchDatabase =
+        Room.databaseBuilder(
+            context.applicationContext,
+            ShopSearchDatabase::class.java,
+            "like-shops"
+        ).build()
 
 }
